@@ -551,7 +551,7 @@ return {
           sessionId: session && session.id ? String(session.id) : null,
           hasEvents: Array.isArray(events),
           eventCount: Array.isArray(events) ? events.length : null,
-          allTypes: Array.isArray(events) ? events.map((e) => e && e.type).filter((t) => t !== undefined) : [],
+          allTypes: Array.isArray(events) ? events.map((e) => e && e.type).filter((t) => t !== undefined).slice(-500) : [],
           lastEvents: lastEvents,
         }, null, 2), undefined, undefined, policy)
         console.log('[qq-notify] 诊断已转储 diag_events.json (' + source + ')')
