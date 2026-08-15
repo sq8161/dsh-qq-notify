@@ -17,7 +17,17 @@
 - 只对顶层用户会话发送（自动过滤子代理回合），3 秒内去重
 - 发送失败只记日志，不影响对话
 
-## 安装（DSH 动态插件）
+## 安装方式一：一键安装（推荐，随 DSH 持久化）
+
+仓库已发布为 dsh 插件包（`dsh-qq-notify`，含 `dsh.bundle` 声明），一条命令安装：
+
+```bash
+dsh plugin --profile web add github:sq8161/dsh-qq-notify#v1.0.0
+```
+
+安装后**重启 DSH** 即生效（web 模式无热更新）：插件编入宿主组合，之后重启无需重新部署，配置与凭据保持。升级版本改 tag 后执行 `dsh plugin --profile web update dsh-qq-notify`。
+
+## 安装方式二：DSH 动态插件
 
 在 DSH 中让模型执行：
 
