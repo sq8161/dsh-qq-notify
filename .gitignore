@@ -1,0 +1,7 @@
+# 验证用依赖（仅开发期；npm install 于 .verify/ 目录）
+.verify/node_modules/
+.verify/package.json
+.verify/package-lock.json
+
+# 运行时生成
+.dsh-qq-notify/
