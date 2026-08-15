@@ -9,9 +9,6 @@
     "./client": "./lib/client.js",
     "./package.json": "./package.json"
   },
-  "files": [
-    "lib"
-  ],
   "dsh": {
     "bundle": {
       "patch": "./cordis.patch.yml"
