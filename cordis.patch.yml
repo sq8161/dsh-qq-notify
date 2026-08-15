@@ -1,0 +1,5 @@
+# dsh-qq-notify bundle patch：把插件作为宿主组合的一行编入。
+# 安装方式：dsh plugin --profile web add github:sq8161/dsh-qq-notify#v1.0.0
+- insert:
+    - id: qq-notify
+      name: dsh-qq-notify
