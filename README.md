@@ -9,6 +9,7 @@
 ## 功能特性
 
 - 监听 `agent/turn-stopping`（对话回合结束）自动推送通知
+- 对话等待用户时也会推送提醒（模型提问、操作审批、计划确认三类中断）
 - 5 个预设槽位（预设 1 为默认预设，其余为空），单选启用 + 自由编辑
 - 占位变量：`{workspace}` `{project}` `{time}` `{request}` `{result}` `{model}` `{provider}` `{sessionTitle}` `{sessionId}` `{turn}`
 - 设置页右上角「?」按钮弹出悬浮使用手册，列出全部可用变量
