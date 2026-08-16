@@ -1,6 +1,6 @@
 # DSH QQ Notification Plugin
 
-English | [中文](README-zh.md)
+English | [中文](README.md)
 
 Sends a private-message notification to your own QQ through the **official Tencent QQ Bot API** at the end of every conversation turn in DeepSeek Harness (DSH). Supports 5 customizable presets, placeholder variables, and **built-in QR-code binding**.
 
