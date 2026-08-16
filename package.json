@@ -1,6 +1,6 @@
 {
   "name": "dsh-qq-notify",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "DSH（DeepSeek Harness）QQ 通知插件：对话回合结束时通过腾讯官方 QQ Bot API 推送私聊提醒，内置扫码绑定、5 个可编辑预设与占位变量，零外部依赖。",
   "type": "module",
   "main": "lib/index.js",
