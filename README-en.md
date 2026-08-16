@@ -9,6 +9,7 @@ Sends a private-message notification to your own QQ through the **official Tence
 ## Features
 
 - Listens to `agent/turn-stopping` and pushes a notification when a turn ends
+- Also notifies when the conversation is waiting for you (model questions, approval requests, plan confirmation)
 - 5 preset slots (preset 1 is the default, the rest empty), radio-select + free editing
 - Placeholder variables: `{workspace}` `{project}` `{time}` `{request}` `{result}` `{model}` `{provider}` `{sessionTitle}` `{sessionId}` `{turn}`
 - A floating manual opened by the "?" button on the settings page lists every available variable
