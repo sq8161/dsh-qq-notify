@@ -17,23 +17,22 @@
 - 只对顶层用户会话发送（自动过滤子代理回合），3 秒内去重
 - 发送失败只记日志，不影响对话
 
-## 安装方式一：一键安装（推荐，随 DSH 持久化）
+## 安装（一键，随 DSH 持久化）
 
 仓库已发布为 dsh 插件包（`dsh-qq-notify`，含 `dsh.bundle` 声明），一条命令安装：
 
 ```bash
-dsh plugin --profile web add github:sq8161/dsh-qq-notify#v1.0.0
+dsh plugin --profile web add github:sq8161/dsh-qq-notify#v1.0.1
 ```
 
-安装后**重启 DSH** 即生效（web 模式无热更新）：插件编入宿主组合，之后重启无需重新部署，配置与凭据保持。升级版本改 tag 后执行 `dsh plugin --profile web update dsh-qq-notify`。
+**安装后发生了什么（新用户视角）：**
 
-## 安装方式二：DSH 动态插件
+1. pnpm 从 GitHub 拉取 `v1.0.1` tag 对应的仓库 tarball，安装到 profile 的 `node_modules/dsh-qq-notify`
+2. `dsh plugin` 的 reconcile 检查到该包 manifest 声明了 `dsh.bundle.patch`，自动把它追加进 profile 的 `dsh.profile.bundles` 层
+3. **重启 DSH** 后，启动器按层加载：包的 `cordis.patch.yml` 把插件注册为宿主组合的一行（`qq-notify`），宿主逻辑激活——监听回合结束、注册 `/qq-notify` RPC 通道；`dsh.client` 声明让浏览器模块表加载 `lib/client.js`，设置页出现「QQ 通知」区块
+4. 用户打开 **设置 → QQ 通知** → 点击 **扫码绑定**（或手动填凭据），完成一次性配置；之后每次重启自动生效，无需重新部署
 
-在 DSH 中让模型执行：
-
-1. `cordis_define`：新建插件，`code.host` 粘贴 `host.js` 内容，`code.client` 粘贴 `client.js` 内容
-2. `cordis_run`：运行定义的 Package，在 Run 卡片中点击允许/运行（授权 Client 半部）
-3. 打开 **设置 → QQ 通知**，点击 **扫码绑定** 完成绑定
+升级版本：改代码 → 推 GitHub → 打新 tag → `dsh plugin --profile web update dsh-qq-notify` → 重启。
 
 ## 使用
 
@@ -68,7 +67,7 @@ dsh plugin --profile web add github:sq8161/dsh-qq-notify#v1.0.0
 
 ## 配置与隐私
 
-- 非敏感配置（预设、AppID、UserOpenID、开关）保存在工作区 `.dsh-qq-notify/dsh_qq_notify_config.json`
+- 非敏感配置（预设、AppID、UserOpenID、开关）保存在插件安装目录：`<profile>/node_modules/dsh-qq-notify/.dsh-qq-notify/dsh_qq_notify_config.json`（与工作区无关，重装插件后请手动迁移）
 - AppSecret 保存在 DSH 凭据库（`~/.dsh/.credentials.yaml`），不写入配置文件
 - access token 仅缓存在内存中，过期自动刷新
 - 默认预设只包含项目名与时间等元信息，不含对话内容
